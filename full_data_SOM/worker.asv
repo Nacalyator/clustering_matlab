@@ -1,0 +1,71 @@
+%% Забиваем путь до корневой папки с данными
+root_dir = 'C:\Users\Антон\Dropbox\Documents\Диссертация\Experimental\Данные о предельной прочности образцов + АЭ\АЭ статистика';
+%% Получаем список файлов с учётом расширения файлов и игнорирования
+%  файлов с данными по локации сигналов
+files = searcher(root_dir, 'xlsx', 'loc');
+disp('Файлы найдены!');
+%% Создаём хранилище для данных
+data = zeros(0, 2);
+%% Когда получили файлы, импортируем данные
+%  Определяем количество файлов
+files_counts = length(files);
+%  Перебираем циклом
+for i = 1:files_counts
+%   Импортируем таблицы из каждого файла Excell
+    [temp1, temp2] = get_table_from_xlsx(files{i, 1});
+%   Выбираем нужные нам столбы
+%   Импортируем данные об амплитуде сигналов
+    amps1 = temp1(:, 6);
+    amps2 = temp2(:, 6);
+%   Импортируем данные об энергии сигналов
+    energy1 = temp1(:, 8);
+    energy2 = temp2(:, 8);
+%   Рассчитываем продолжительности сигналов
+    prolongations1 = calculate_prolongation(amps1, energy1);
+    prolongations2 = calculate_prolongation(amps2, energy2);
+%   Добавляем данные в общее хранилище
+    data = [data; amps1, prolongations1];
+    data = [data; amps2, prolongations2];
+end
+disp('Данные успешно импортированны!');
+%% Строим график всех сигналов
+%  Выбираем куда сохранить
+full_data_img_path = 'C:\Users\Антон\Dropbox\Documents\Диссертация\MatLab\Clustering\full_data_SOM\plots\full_data';
+%  Создаём окно изображения без его отображения
+full_data_figure = figure('doublebuffer','off','Visible','Off');
+%  Строим сами точки на графике
+plot(data(:, 2), data(:, 1), 'o', 'MarkerSize', 2, 'MarkerFaceColor', 'cyan'); hold on;
+%  Подписываем оси
+ylabel('Amplitude, mV');
+xlabel('Prolongation, s');
+%  Подписываем график
+title('Data from all files');
+%  Сохраняем
+print(full_data_img_path, '-dpng');
+%% Используем нейросеть для кластеризации
+%  Займёт очень много времени
+[clusters, centroids] = SOMNN_clustering(data);
+%% Строим график кластеризованных данных
+%  Выбираем куда сохранить
+SOM_data_img_path = 'C:\Users\Антон\Dropbox\Documents\Диссертация\MatLab\Clustering\full_data_SOM\plots\clusterizated_data';
+%  Создаём окно изображения без его отображения
+SOMNN_figure = figure('doublebuffer','off','Visible','Off');
+%  Строим сами точки на графике
+plot(clusters{1, 1}(:, 2), clusters{1, 1}(:, 1), 'o', 'MarkerSize', 2, 'MarkerFaceColor', 'cyan'); hold on;
+plot(clusters{2, 1}(:, 2), clusters{2, 1}(:, 1), 'o', 'MarkerSize', 2, 'MarkerFaceColor', 'magenta'); hold on;
+plot(clusters{3, 1}(:, 2), clusters{3, 1}(:, 1), 'o', 'MarkerSize', 2, 'MarkerFaceColor', 'green'); hold on;
+plot(clusters{4, 1}(:, 2), clusters{4, 1}(:, 1), 'o', 'MarkerSize', 2, 'MarkerFaceColor', 'blue'); hold on;
+%  Подписываем кластера
+legend('Cluster 1', 'Cluster 2', 'Cluster 3', 'Cluster 4');
+%  Отображаем на графике центроиды кластеров
+plot(centroids(:, 2), centroids(:, 1), 'ro', 'MarkerSize', 8, 'MarkerFaceColor', 'red');
+%  Подписываем оси
+ylabel('Amplitude, mV');
+xlabel('Prolongation, s');
+%  Подписываем график
+title('Data from all files clusterization by SOM NN');
+%  Сохраняем
+print(SOM_data_img_path, '-dpng');
+%% Радуемся проделанной работе
+good_news = 'Это закончилось!';
+disp(good_news);

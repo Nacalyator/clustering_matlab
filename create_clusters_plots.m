@@ -42,26 +42,30 @@ mkdir(plots_directory);
 %   k-means
 %   С первого датчика
 kmeans1_figure = figure('doublebuffer','off','Visible','Off');
-plot(kmeans_clusters1{1, 1}(:, 2), kmeans_clusters1{1, 1}(:, 1), 'o', 'MarkerSize', 1); hold on;
-plot(kmeans_clusters1{2, 1}(:, 2), kmeans_clusters1{2, 1}(:, 1), 'o', 'MarkerSize', 1); hold on;
-plot(kmeans_clusters1{3, 1}(:, 2), kmeans_clusters1{3, 1}(:, 1), 'o', 'MarkerSize', 1); hold on;
-plot(kmeans_clusters1{4, 1}(:, 2), kmeans_clusters1{4, 1}(:, 1), 'o', 'MarkerSize', 1); hold on;
+plot(kmeans_clusters1{1, 1}(:, 2), kmeans_clusters1{1, 1}(:, 1), 'o', 'MarkerSize', 2, 'MarkerFaceColor', 'cyan'); hold on;
+plot(kmeans_clusters1{2, 1}(:, 2), kmeans_clusters1{2, 1}(:, 1), 'o', 'MarkerSize', 2, 'MarkerFaceColor', 'magenta'); hold on;
+plot(kmeans_clusters1{3, 1}(:, 2), kmeans_clusters1{3, 1}(:, 1), 'o', 'MarkerSize', 2, 'MarkerFaceColor', 'green'); hold on;
+plot(kmeans_clusters1{4, 1}(:, 2), kmeans_clusters1{4, 1}(:, 1), 'o', 'MarkerSize', 2, 'MarkerFaceColor', 'blue'); hold on;
 legend('Cluster 1', 'Cluster 2', 'Cluster 3', 'Cluster 4');
-plot(kmeans_centroids1(:, 2), kmeans_centroids1(:, 1), 'ro', 'MarkerSize', 10);
+plot(kmeans_centroids1(:, 2), kmeans_centroids1(:, 1), 'ro', 'MarkerSize', 8, 'MarkerFaceColor', 'red');
+axis([0, 0.4, 0, 1100]);
 ylabel('Amplitude, mV');
 xlabel('Prolongation, s');
+title('Data from sensor 1 clusterization by k-means method');
 kmeans1_path = strcat(plots_directory, '/', 'kmeans1');
 print(kmeans1_path, '-dpng');
 %   Со второго датчика
 kmeans2_figure = figure('doublebuffer','off','Visible','Off');
-plot(kmeans_clusters2{1, 1}(:, 2), kmeans_clusters2{1, 1}(:, 1), 'o', 'MarkerSize', 1); hold on;
-plot(kmeans_clusters2{2, 1}(:, 2), kmeans_clusters2{2, 1}(:, 1), 'o', 'MarkerSize', 1); hold on;
-plot(kmeans_clusters2{3, 1}(:, 2), kmeans_clusters2{3, 1}(:, 1), 'o', 'MarkerSize', 1); hold on;
-plot(kmeans_clusters2{4, 1}(:, 2), kmeans_clusters2{4, 1}(:, 1), 'o', 'MarkerSize', 1); hold on;
+plot(kmeans_clusters2{1, 1}(:, 2), kmeans_clusters2{1, 1}(:, 1), 'o', 'MarkerSize', 2, 'MarkerFaceColor', 'cyan'); hold on;
+plot(kmeans_clusters2{2, 1}(:, 2), kmeans_clusters2{2, 1}(:, 1), 'o', 'MarkerSize', 2, 'MarkerFaceColor', 'magenta'); hold on;
+plot(kmeans_clusters2{3, 1}(:, 2), kmeans_clusters2{3, 1}(:, 1), 'o', 'MarkerSize', 2, 'MarkerFaceColor', 'green'); hold on;
+plot(kmeans_clusters2{4, 1}(:, 2), kmeans_clusters2{4, 1}(:, 1), 'o', 'MarkerSize', 2, 'MarkerFaceColor', 'blue'); hold on;
 legend('Cluster 1', 'Cluster 2', 'Cluster 3', 'Cluster 4');
-plot(kmeans_centroids2(:, 2), kmeans_centroids2(:, 1), 'ro', 'MarkerSize', 10);
+plot(kmeans_centroids2(:, 2), kmeans_centroids2(:, 1), 'ro', 'MarkerSize', 8, 'MarkerFaceColor', 'red');
+axis([0, 0.4, 0, 1100]);
 ylabel('Amplitude, mV');
 xlabel('Prolongation, s');
+title('Data from sensor 2 clusterization by k-means method');
 kmeans2_path = strcat(plots_directory, '/', 'kmeans2');
 print(kmeans2_path, '-dpng');
 
@@ -69,26 +73,30 @@ print(kmeans2_path, '-dpng');
 %   c-means
 %   С первого датчика
 cmeans1_figure = figure('doublebuffer','off','Visible','Off');
-plot(cmeans_clusters1{1, 1}(:, 2), cmeans_clusters1{1, 1}(:, 1), 'o', 'MarkerSize', 1); hold on;
-plot(cmeans_clusters1{2, 1}(:, 2), cmeans_clusters1{2, 1}(:, 1), 'o', 'MarkerSize', 1); hold on;
-plot(cmeans_clusters1{3, 1}(:, 2), cmeans_clusters1{3, 1}(:, 1), 'o', 'MarkerSize', 1); hold on;
-plot(cmeans_clusters1{4, 1}(:, 2), cmeans_clusters1{4, 1}(:, 1), 'o', 'MarkerSize', 1); hold on;
+plot(cmeans_clusters1{1, 1}(:, 2), cmeans_clusters1{1, 1}(:, 1), 'o', 'MarkerSize', 2, 'MarkerFaceColor', 'cyan'); hold on;
+plot(cmeans_clusters1{2, 1}(:, 2), cmeans_clusters1{2, 1}(:, 1), 'o', 'MarkerSize', 2, 'MarkerFaceColor', 'magenta'); hold on;
+plot(cmeans_clusters1{3, 1}(:, 2), cmeans_clusters1{3, 1}(:, 1), 'o', 'MarkerSize', 2, 'MarkerFaceColor', 'green'); hold on;
+plot(cmeans_clusters1{4, 1}(:, 2), cmeans_clusters1{4, 1}(:, 1), 'o', 'MarkerSize', 2, 'MarkerFaceColor', 'blue'); hold on;
 legend('Cluster 1', 'Cluster 2', 'Cluster 3', 'Cluster 4');
-plot(cmeans_centroids1(:, 2), cmeans_centroids1(:, 1), 'ro', 'MarkerSize', 10);
+plot(cmeans_centroids1(:, 2), cmeans_centroids1(:, 1), 'ro', 'MarkerSize', 8, 'MarkerFaceColor', 'red');
+axis([0, 0.4, 0, 1100]);
 ylabel('Amplitude, mV');
 xlabel('Prolongation, s');
+title('Data from sensor 1 clusterization by c-means method');
 cmeans1_path = strcat(plots_directory, '/', 'cmeans1');
 print(cmeans1_path, '-dpng');
 %   Со второго датчика
 cmeans2_figure = figure('doublebuffer','off','Visible','Off');
-plot(cmeans_clusters2{1, 1}(:, 2), cmeans_clusters2{1, 1}(:, 1), 'o', 'MarkerSize', 1); hold on;
-plot(cmeans_clusters2{2, 1}(:, 2), cmeans_clusters2{2, 1}(:, 1), 'o', 'MarkerSize', 1); hold on;
-plot(cmeans_clusters2{3, 1}(:, 2), cmeans_clusters2{3, 1}(:, 1), 'o', 'MarkerSize', 1); hold on;
-plot(cmeans_clusters2{4, 1}(:, 2), cmeans_clusters2{4, 1}(:, 1), 'o', 'MarkerSize', 1); hold on;
+plot(cmeans_clusters2{1, 1}(:, 2), cmeans_clusters2{1, 1}(:, 1), 'o', 'MarkerSize', 2, 'MarkerFaceColor', 'cyan'); hold on;
+plot(cmeans_clusters2{2, 1}(:, 2), cmeans_clusters2{2, 1}(:, 1), 'o', 'MarkerSize', 2, 'MarkerFaceColor', 'magenta'); hold on;
+plot(cmeans_clusters2{3, 1}(:, 2), cmeans_clusters2{3, 1}(:, 1), 'o', 'MarkerSize', 2, 'MarkerFaceColor', 'green'); hold on;
+plot(cmeans_clusters2{4, 1}(:, 2), cmeans_clusters2{4, 1}(:, 1), 'o', 'MarkerSize', 2, 'MarkerFaceColor', 'blue'); hold on;
 legend('Cluster 1', 'Cluster 2', 'Cluster 3', 'Cluster 4');
-plot(cmeans_centroids2(:, 2), cmeans_centroids2(:, 1), 'ro', 'MarkerSize', 10);
+plot(cmeans_centroids2(:, 2), cmeans_centroids2(:, 1), 'ro', 'MarkerSize', 8, 'MarkerFaceColor', 'red');
+axis([0, 0.4, 0, 1100]);
 ylabel('Amplitude, mV');
 xlabel('Prolongation, s');
+title('Data from sensor 2 clusterization by c-means method');
 cmeans2_path = strcat(plots_directory, '/', 'cmeans2');
 print(cmeans2_path, '-dpng');
 
@@ -96,26 +104,30 @@ print(cmeans2_path, '-dpng');
 %   SOMNN
 %   С первого датчика
 SOMNN1_figure = figure('doublebuffer','off','Visible','Off');
-plot(SOMNN_clusters1{1, 1}(:, 2), SOMNN_clusters1{1, 1}(:, 1), 'o', 'MarkerSize', 1); hold on;
-plot(SOMNN_clusters1{2, 1}(:, 2), SOMNN_clusters1{2, 1}(:, 1), 'o', 'MarkerSize', 1); hold on;
-plot(SOMNN_clusters1{3, 1}(:, 2), SOMNN_clusters1{3, 1}(:, 1), 'o', 'MarkerSize', 1); hold on;
-plot(SOMNN_clusters1{4, 1}(:, 2), SOMNN_clusters1{4, 1}(:, 1), 'o', 'MarkerSize', 1); hold on;
+plot(SOMNN_clusters1{1, 1}(:, 2), SOMNN_clusters1{1, 1}(:, 1), 'o', 'MarkerSize', 2, 'MarkerFaceColor', 'cyan'); hold on;
+plot(SOMNN_clusters1{2, 1}(:, 2), SOMNN_clusters1{2, 1}(:, 1), 'o', 'MarkerSize', 2, 'MarkerFaceColor', 'magenta'); hold on;
+plot(SOMNN_clusters1{3, 1}(:, 2), SOMNN_clusters1{3, 1}(:, 1), 'o', 'MarkerSize', 2, 'MarkerFaceColor', 'green'); hold on;
+plot(SOMNN_clusters1{4, 1}(:, 2), SOMNN_clusters1{4, 1}(:, 1), 'o', 'MarkerSize', 2, 'MarkerFaceColor', 'blue'); hold on;
 legend('Cluster 1', 'Cluster 2', 'Cluster 3', 'Cluster 4');
-plot(SOMNN_centroids1(:, 2), SOMNN_centroids1(:, 1), 'ro', 'MarkerSize', 10);
+plot(SOMNN_centroids1(:, 2), SOMNN_centroids1(:, 1), 'ro', 'MarkerSize', 8, 'MarkerFaceColor', 'red');
+axis([0, 0.4, 0, 1100]);
 ylabel('Amplitude, mV');
 xlabel('Prolongation, s');
+title('Data from sensor 1 clusterization by SOM NN');
 SOMNN1_path = strcat(plots_directory, '/', 'SOMNN1');
 print(SOMNN1_path, '-dpng');
 %   Со второго датчика
 SOMNN2_figure = figure('doublebuffer','off','Visible','Off');
-plot(SOMNN_clusters2{1, 1}(:, 2), SOMNN_clusters2{1, 1}(:, 1), 'o', 'MarkerSize', 1); hold on;
-plot(SOMNN_clusters2{2, 1}(:, 2), SOMNN_clusters2{2, 1}(:, 1), 'o', 'MarkerSize', 1); hold on;
-plot(SOMNN_clusters2{3, 1}(:, 2), SOMNN_clusters2{3, 1}(:, 1), 'o', 'MarkerSize', 1); hold on;
-plot(SOMNN_clusters2{4, 1}(:, 2), SOMNN_clusters2{4, 1}(:, 1), 'o', 'MarkerSize', 1); hold on;
+plot(SOMNN_clusters2{1, 1}(:, 2), SOMNN_clusters2{1, 1}(:, 1), 'o', 'MarkerSize', 2, 'MarkerFaceColor', 'cyan'); hold on;
+plot(SOMNN_clusters2{2, 1}(:, 2), SOMNN_clusters2{2, 1}(:, 1), 'o', 'MarkerSize', 2, 'MarkerFaceColor', 'magenta'); hold on;
+plot(SOMNN_clusters2{3, 1}(:, 2), SOMNN_clusters2{3, 1}(:, 1), 'o', 'MarkerSize', 2, 'MarkerFaceColor', 'green'); hold on;
+plot(SOMNN_clusters2{4, 1}(:, 2), SOMNN_clusters2{4, 1}(:, 1), 'o', 'MarkerSize', 2, 'MarkerFaceColor', 'blue'); hold on;
 legend('Cluster 1', 'Cluster 2', 'Cluster 3', 'Cluster 4');
-plot(SOMNN_centroids2(:, 2), SOMNN_centroids2(:, 1), 'ro', 'MarkerSize', 10);
+plot(SOMNN_centroids2(:, 2), SOMNN_centroids2(:, 1), 'ro', 'MarkerSize', 8, 'MarkerFaceColor', 'red');
+axis([0, 0.4, 0, 1100]);
 ylabel('Amplitude, mV');
 xlabel('Prolongation, s');
+title('Data from sensor 2 clusterization by SOM NN');
 SOMNN2_path = strcat(plots_directory, '/', 'SOMNN2');
 print(SOMNN2_path, '-dpng');
 
